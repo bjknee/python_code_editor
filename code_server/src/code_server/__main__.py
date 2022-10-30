@@ -36,6 +36,8 @@ def read_template(filename, directory='templates'):
     f = open(pathname, "r", encoding="utf-8")
     return f.read()
 
+
+
 if __name__ == "__main__":
     webServer = HTTPServer((hostName, serverPort), QuizRequestHandler)
     print("Server started http://%s:%s" % (hostName, serverPort))
@@ -47,4 +49,3 @@ if __name__ == "__main__":
 
     webServer.server_close()
     print("Server stopped.")
-
