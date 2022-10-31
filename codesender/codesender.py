@@ -1,5 +1,6 @@
 # Python 3 server example
 import os
+import webbrowser
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qs
 from subprocess import PIPE, STDOUT, run
@@ -34,7 +35,8 @@ class QuizRequestHandler(BaseHTTPRequestHandler):
 
 def read_template(filename, directory='templates'):
     pathname = os.path.join(directory, filename)
-    f = open(pathname, "r", encoding="utf-8")
+    temp_path = "codesender/templates/index.html"
+    f = open(temp_path, "r", encoding="utf-8")
     return f.read()
 
 
@@ -42,7 +44,6 @@ def read_template(filename, directory='templates'):
 def main():
     webServer = HTTPServer((hostName, serverPort), QuizRequestHandler)
     print("Server started http://%s:%s" % (hostName, serverPort))
-
     try:
         webServer.serve_forever()
     except KeyboardInterrupt:

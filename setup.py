@@ -5,7 +5,7 @@ setup(
     version="0.0.0",
     author="G Team",
     description="Codesender project for COMP2005",
-    url="https://github.com/MUN-CS2005/codesender-project-gteam",   # project home page, if any
+    url="https://github.com/MUN-CS2005/codesender-project-gteam",
 
 
     packages=['codesender'],
