@@ -4,6 +4,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qs
 from subprocess import PIPE, STDOUT, run
 
+
 hostName = "localhost"
 serverPort = 8080
 
@@ -38,7 +39,7 @@ def read_template(filename, directory='templates'):
 
 
 
-if __name__ == "__main__":
+def main():
     webServer = HTTPServer((hostName, serverPort), QuizRequestHandler)
     print("Server started http://%s:%s" % (hostName, serverPort))
 
@@ -49,3 +50,4 @@ if __name__ == "__main__":
 
     webServer.server_close()
     print("Server stopped.")
+
