@@ -4,10 +4,12 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qs
 from subprocess import PIPE, STDOUT, run
 
+
 hostName = "localhost"
 serverPort = 8080
 
 class QuizRequestHandler(BaseHTTPRequestHandler):
+    """TEMPORARY IMPLEMENTATION OF QUIZ REQUEST HANDLER"""
     def do_GET(self):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
@@ -33,14 +35,15 @@ class QuizRequestHandler(BaseHTTPRequestHandler):
 
 def read_template(filename, directory='templates'):
     pathname = os.path.join(directory, filename)
-    f = open(pathname, "r", encoding="utf-8")
+    temp_path = "codesender/templates/index.html"
+    f = open(temp_path, "r", encoding="utf-8")
     return f.read()
 
 
-if __name__ == "__main__":
+
+def main():
     webServer = HTTPServer((hostName, serverPort), QuizRequestHandler)
     print("Server started http://%s:%s" % (hostName, serverPort))
-
     try:
         webServer.serve_forever()
     except KeyboardInterrupt:
@@ -48,3 +51,4 @@ if __name__ == "__main__":
 
     webServer.server_close()
     print("Server stopped.")
+
