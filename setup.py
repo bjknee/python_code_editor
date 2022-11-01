@@ -1,24 +1,26 @@
 from setuptools import setup
 
+# Run "pip install -e ." in an activated virtual environment to run setup
+# and install the codesender package
 setup(
+    #
     name="codesender",
     version="0.0.0",
     author="G Team",
     description="Codesender project for COMP2005",
     url="https://github.com/MUN-CS2005/codesender-project-gteam",
 
-
+    # Package and requirement meta data
     packages=['codesender'],
-    # Check that a package for install is available from PyPI
     install_requires=[
         'Flask'
     ],
     package_data={
-        # If any package contains *.txt or *.pdf files, include them:
         '': ['*.txt', '*.pdf'],
-        # And everything in the test, doc, static and jinja folders:
         'codesender': ['docs/*','tests/*', 'static/*', 'templates/*'],
     },
+    # Creates a command that can be executed from inside the virtual environment
+    # to launch the server
     entry_points={
         'console_scripts': [
             'start-server = codesender.codesender:main'

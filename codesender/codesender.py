@@ -1,6 +1,5 @@
 # Python 3 server example
 import os
-import webbrowser
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qs
 from subprocess import PIPE, STDOUT, run
@@ -10,6 +9,7 @@ hostName = "localhost"
 serverPort = 8080
 
 class QuizRequestHandler(BaseHTTPRequestHandler):
+    """TEMPORARY IMPLEMENTATION OF QUIZ REQUEST HANDLER"""
     def do_GET(self):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
