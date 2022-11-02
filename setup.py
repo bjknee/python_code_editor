@@ -11,21 +11,22 @@ setup(
     url="https://github.com/MUN-CS2005/codesender-project-gteam",
 
     # Package and requirement meta data
-    packages=['codesender'],
+    packages=['codesender', 'codesender.serverStorage'],
     install_requires=[
         'Flask',
         'lxml',
         'requests',
     ],
     package_data={
-        '': ['*.txt', '*.pdf'],
-        'codesender': ['docs/*','tests/*', 'static/*', 'templates/*'],
+        '': ['*.txt', '*.pdf', '*.py'],
+        'codesender': ['docs/*', 'tests/*', 'static/*', 'templates/*'],
     },
     # Creates a command that can be executed from inside the virtual environment
     # to launch the server
+    py_modules = ['codesender.serverStorage'],
     entry_points={
         'console_scripts': [
-            'start-server = codesender.codesender:serverStorage'
+            'start-server = codesender.codesender:main'
         ]
     }
 )
