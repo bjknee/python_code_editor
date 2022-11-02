@@ -3,11 +3,11 @@ import os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qs
 from subprocess import PIPE, STDOUT, run
-
-
+from codesender.serverStorage.serverStorage import serverStorage
 
 hostName = "localhost"
 serverPort = 8080
+db = serverStorage()
 global code_reference
 
 class QuizRequestHandler(BaseHTTPRequestHandler):
@@ -41,15 +41,18 @@ class QuizRequestHandler(BaseHTTPRequestHandler):
             new_page = read_template("index.html").replace("<!-- OUTPUT PLACEHOLDER -->", " ", 1)
             new_page = new_page.replace("ENTER CODE HERE", "code snippet has been save!")
             self.wfile.write(bytes(new_page, "utf-8"))
+            db.storeCode(code_reference, "admin")
+
         if self.path == "/pull":
+            code = db.retrieveCode("admin")
             new_page = read_template("index.html").replace("<!-- OUTPUT PLACEHOLDER -->", "Code has been retrieved", 1)
-            new_page = new_page.replace("<!-- OUTPUT_TWO PLACEHOLDER -->", code_reference)
+            new_page = new_page.replace("<!-- OUTPUT_TWO PLACEHOLDER -->", code)
             self.wfile.write(bytes(new_page, "utf-8"))
 
 def read_template(filename, directory='templates'):
     pathname = os.path.join(directory, filename)
-    temp_path = "codesender/templates/index.html"
-    f = open(temp_path, "r", encoding="utf-8")
+    temp_pathname = "codesender/templates/index.html"
+    f = open(temp_pathname, "r", encoding="utf-8")
     return f.read()
 
 

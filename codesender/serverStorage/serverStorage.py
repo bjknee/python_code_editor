@@ -25,13 +25,12 @@ class serverStorage:
     def storeCode(self, usrCode, usr="admin", tag=None):
         # will remove admin default in later submission
         store = sh.open("codeServerDB.txt", flag='c', protocol=None, writeback=False)
-        store['username'] = usr
-        store['code segment'] = usrCode
+        store[usr] = usrCode
         store.close()
 
     def retrieveCode(self, usr="admin", tag=None):
         # will remove admin default in later submission
         retrieve = sh.open("codeServerDB.txt", flag='c', protocol=None, writeback=False)
-        code_snippet = retrieve['code segment']
+        code_snippet = retrieve[usr]
         retrieve.close()
         return code_snippet
