@@ -1,6 +1,6 @@
 from setuptools import setup
 
-# Run "pip install -e ." in an activated virtual environment to run setup
+# Run "pip install -e ." in an activated virtual environment to run setup.py
 # and install the codesender package
 setup(
     #
@@ -13,7 +13,9 @@ setup(
     # Package and requirement meta data
     packages=['codesender'],
     install_requires=[
-        'Flask'
+        'Flask',
+        'lxml',
+        'requests',
     ],
     package_data={
         '': ['*.txt', '*.pdf'],
@@ -23,7 +25,7 @@ setup(
     # to launch the server
     entry_points={
         'console_scripts': [
-            'start-server = codesender.codesender:main'
+            'start-server = codesender.codesender:serverStorage'
         ]
     }
 )

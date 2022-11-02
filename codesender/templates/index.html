@@ -14,6 +14,9 @@
 <body>
 <div id="intro">
     <h1>Python Online Quiz</h1>
+    <div>
+        <pre><!-- OUTPUT_TWO PLACEHOLDER --></pre>
+    </div>
 </div>
 <br>
 <div>
@@ -22,11 +25,21 @@
         <br>
         <button type="submit" id="run">Run</button>
     </form>
+    <form action="/store" method="POST">
+        <button type="submit" id="store_code">Save Code Snippet</button>
+    </form>
+    <form action="/pull" method="POST">
+        <button type="submit" id="get_code">Pull Code Snippet</button>
+    </form>
     <br>
     <div id="output">
         <pre><!-- OUTPUT PLACEHOLDER --></pre>
     </div>
     <br>
+</div>
+<div>
+
+
 </div>
 </body>
 </html>
