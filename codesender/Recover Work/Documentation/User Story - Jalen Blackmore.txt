@@ -1,0 +1,8 @@
+User Story 1 - Jalen Blackmore
+November 2nd, 2022
+
+
+Jake is a second year computer science student who has some familiarity with Python and mostly programs with the PyCharm IDE. In other IDEs, many keywords are colour-coded to allow for easy differentiation between keywords and other code. When Jake writes this loop in the CodeServer application:
+    for x in table1:
+        print("Value of X is: ", x)
+The keywords: 'for', 'in', 'and' , 'print' do not stand out because they do not have different coloured text, meaning the code was more difficult for he and his team to read quickly.
