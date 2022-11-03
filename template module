@@ -2,8 +2,8 @@
 to be implemented for submission 6
 
 
-A html page templating solution is needed so future features can use multiple pages with different kinds of feedback.
-All code tasks should include appropriate unit test for regression testing. The module must be appropriately decoupled
+An html page templating solution will be created so future features will be able to  use multiple pages with different kinds of feedback.
+All code tasks will include appropriate unit test for regression testing. The module must be appropriately decoupled
 from the rest of the code base with a well defined API that allows the implementation to be changed.
 
 
