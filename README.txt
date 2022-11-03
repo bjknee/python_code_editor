@@ -36,7 +36,7 @@ Launching the Server:
 
 Using the application:
     - Type python code into the text area and press "Run" to
-      execute the code. You should see the output under the form
+      execute the code. You should see the output under the form.
     - To save a code snippet, run your code to ensure it outputs
       correctly. Then press "Save Code Snippet", you should be
       notified in the text area that your code snippet has been
