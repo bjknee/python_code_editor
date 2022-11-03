@@ -11,7 +11,7 @@ He presses the Save Code Snippet button, clears the text area,
 and proceeds to type:
 
     import numpy
-    import Adder
+    from Adder import Adder
 
     my_list = numpy.array([5,9])
     adder = Adder()
