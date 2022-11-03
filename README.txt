@@ -46,7 +46,6 @@ Using the application:
       displayed above the form.
 
 Known Limitations:
-
     - Currently "Save Code Snippet" only works as intended
       after pressing "Run". This is due to the HTML file not
       being updated until after the POST request sent by the
