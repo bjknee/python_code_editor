@@ -1,15 +1,30 @@
-/codesender-project-gteam   // Main repo directory
-└── /codesender             // Module directory
-    │   ├──/templates       // Holds HTML templates
-    │   │   └── index.html  // index.html
-    │   ├──/static          // Holds static files
-    │   │   └── styles.css  // Master style sheet
-    │   ├──/tests           // Module directory for regression tests
-    │   │   └── __init__.py // tests __init__
-    │   ├── __init__.py     // codesender __init__
-    │   └── codesender.py   // temporary codesender module
-    ├── README.txt          // README
-    └── setup.py            // Installation file
+/codesender-project-gteam                           // Main repo directory
+└── /codesender                                     // Module directory
+    │   ├──/recoverWork                             // Module directory for recoverWork
+    │   │   └── __init__.py                         // recoverWork __init__
+    │   │   └── recoverWork.py                      // recoverWork module
+    │   ├──/serverStorage                           // Module directory for serverStorage
+    │   │   └── __init__.py                         // serverStorage __init__
+    │   │   └── serverStorage.py                    // serverStorage module
+    │   ├──/static                                  // Holds static files
+    │   │   └── styles.css                          // Master style sheet
+    │   ├──/templates                               // Holds HTML templates
+    │   │   └── index.html                          // index.html
+    │   ├──/tests                                   // Module directory for regression tests
+    │   │   └── __init__.py                         // tests __init__
+    │   ├── __init__.py                             // codesender __init__
+    │   └── codesender.py                           // temporary codesender module
+    ├── /documentation                              // Documentation directory for all additional documentation
+    │       └── /User Stories                       // Directory to hold all user stories for submission 5
+    │               ├── user_story_brian.txt        // Brian's User Story
+    │               ├── user_story_Gizem.txt        // Gizem's User Story
+    │               ├── user_story_jalen.txt        // Jalen's User Story
+    │               └── user_story_kayla.txt        // Kayla's User Story
+    │        └── documentation for submission 5.txt // Holds documentation about our SCRUM meetings for submission 5
+    │        └── Team evaluation - Submission 5.txt // Holds documentation about our team evaluation and code review for submission 5
+    ├── README.txt                                  // README
+    └── setup.py                                    // Installation file
+
 
 Installation:
     - Clone repository from github with command:

@@ -1,29 +1,3 @@
-Team evaluation (Gizem):
-
-  We were able to communicate easily since we have made a group chat on Discord to dicuss about our project, tasks and meeting times whether in person or online,
-  everyteam member was responsible.
-
-Team evaluation (Kayla):
-
-  The team was able to come together, despite conflicting schedules and other commitments, via Discord and our first SCRUM meeting. We tried our best too collaboratively
-  understand what was asked of us in our Team Tasks and everyone was open to being corrected when necessary. Brian did an excellent job of communicating his progress with 
-  his Individual tasks and his efficient approach in his coding really helped in executing in the initial stages. I think that I did well enough, considering that my tasks
-  are to ensure persistence for the project. Jalen made a good effort in addressing his work recovery task. The team may need to re-evaluate that task assignment, since 
-  I'm the one handling a related task. Gizem...
-  
-Team evaluation (Jalen):
-
-  The group has communicated very well throughout the first stages of the project, whether in our group discord channel
-or during meetings. Everyone is contributing to the work, and have been actively completing tasks and laying the
-groundwork for the rest of our project completion. Kayla had stepped up to take the role of scrum master for our first
-meeting and did a fantastic job organizing and mediating our first discussion. Gizem has done a great job with the
-documentation for our 5th submission. Brian has done excellently with setting up the first iteration of how the
-CodeServer will look, and implemented some functionality. The code our group has written so far is well-written.
-
-
-
-All together version: # this line to be deleted
-
     The group has communicated very well throughout the first stages of the project, whether in our group discord channel
 or during meetings. The team was able to come together, despite conflicting schedules and other commitments, via Discord
 and our first SCRUM meeting. We tried our best too collaboratively understand what was asked of us in our Team Tasks and
@@ -33,4 +7,7 @@ our project completion. Kayla had stepped up to take the role of scrum master fo
 job organizing and mediating our first discussion. Gizem has done a great job with the documentation for our 5th submission.
 Brian has done excellently with setting up the first iteration of how the CodeServer will look, and implemented some functionality.
 The code our group has written so far is well-written.
+One of the main sources of confusion throughout the first development cycle was trying to translate what was asked of
+in the individual tasks into features for the application. With a clearer understanding of what each module is responsible
+for, we are more confident in our ability to delegate appropriate tasks to team members working on related modules.
 
