@@ -21,7 +21,7 @@
     │               ├── user_story_jalen.txt        // Jalen's User Story
     │               └── user_story_kayla.txt        // Kayla's User Story
     │        └── documentation for submission 5.txt // Documentation about our SCRUM meetings for submission 5
-    │        └── Team evaluation - Submission 5.txt // Documentation about our team evaluation and code review for submission 5
+    │        └── Team evaluation - Submission 5.txt // Documentation on our team evaluation and code review for submission 5
     ├── README.txt                                  // README
     └── setup.py                                    // Installation file
 
