@@ -22,7 +22,6 @@ setup(
     packages=['codesender', 'codesender.serverStorage'],
     install_requires=[
         'Flask',
-        'shelve'
     ],
     package_data={
         '': ['*.txt', '*.pdf', '*.py'],
