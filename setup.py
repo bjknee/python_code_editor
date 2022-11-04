@@ -8,7 +8,6 @@ into a virtual environment. Creates an entry point script so after installation 
 can be launched with the "start-server" command while in the virtual environment.
 """
 
-
 # Run "pip install -e ." in an activated virtual environment to run setup.py
 # and install the codesender package
 setup(
