@@ -27,7 +27,6 @@
 
 
 Installation:
-    Installation:
     - Clone repository from github at:
         https://github.com/MUN-CS2005/codesender-project-gteam
     - In terminal, navigate to the codesender-project-gteam directory
