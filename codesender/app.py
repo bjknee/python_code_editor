@@ -4,9 +4,11 @@ import os
 
 app = Flask(__name__)
 
+
 @app.route("/", methods=['POST', 'GET'])
 def index():
     return render_template("index.html")
+
 
 @app.route("/run_code", methods=['POST', 'GET'])
 def run_sender():
@@ -20,11 +22,15 @@ def run_sender():
     else:
         return render_template("index.html")
 
+
 def read_template(filename, directory='templates'):
     pathname = os.path.join(directory, filename)
     temp_pathname = "codesender/templates/index.html"
     f = open(pathname, "r", encoding="utf-8")
     return f.read()
 
-if __name__ == "__main__":
+
+def main():
     app.run(debug=False)
+
+main()

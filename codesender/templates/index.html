@@ -8,6 +8,7 @@
     <meta name="keywords" content="Lint,Online,Editor,Python,Syntax-Checking">
     <meta name="author" content="Ed Brown">
     <title>COMP2005 Python Quiz</title>
+    <script src="../static/scripts.js"></script>
     <!-- Favicon -->
 </head>
 
@@ -15,7 +16,7 @@
 <div id="intro">
     <h1>Python Online Quiz</h1>
     <div>
-        <pre><!-- OUTPUT_TWO PLACEHOLDER --></pre>
+        <pre id="save_output"><!-- OUTPUT_TWO PLACEHOLDER --></pre>
     </div>
 </div>
 <br>
@@ -24,12 +25,8 @@
         <textarea name="codestuff" id="coding" rows="25" cols="80">ENTER CODE HERE</textarea>
         <br>
         <button type="submit" id="run">Run</button>
-    </form>
-    <form action="/store" method="POST">
-        <button type="submit" id="store_code">Save Code Snippet</button>
-    </form>
-    <form action="/pull" method="POST">
-        <button type="submit" id="get_code">Pull Code Snippet</button>
+        <button type="button" id="store_code" onclick="save()">Save Code Snippet</button>
+        <button type="button" id="get_code" onclick="pull()">Pull Code Snippet</button>
     </form>
     <br>
     <div id="output">
@@ -37,9 +34,12 @@
     </div>
     <br>
 </div>
-<div>
-
+<div id="upload-download-container">
+        <button id="downloadButton" onclick="saveTextAsFile(coding.value, 'download.txt')">Download Code</button>
+        <input id="txtFile" type="file" text="Upload a File" />
 
 </div>
+<script src="../static/upload.js"></script>
+<script src="../static/download.js"></script>
 </body>
 </html>
