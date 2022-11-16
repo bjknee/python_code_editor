@@ -22,6 +22,7 @@ setup(
     packages=['codesender', 'codesender.serverStorage'],
     install_requires=[
         'Flask',
+        'flask_sqlalchemy'
     ],
     package_data={
         '': ['*.txt', '*.pdf', '*.py'],

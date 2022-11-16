@@ -1,70 +1,48 @@
-# Python 3 server example
-import os
-from http.server import BaseHTTPRequestHandler, HTTPServer
-from urllib.parse import parse_qs
+from flask import Flask, render_template, request
 from subprocess import PIPE, STDOUT, run
+from flask_sqlalchemy import SQLAlchemy
 from codesender.serverStorage.serverStorage import serverStorage
+import os
 
-hostName = "localhost"
-serverPort = 8080
-db = serverStorage()
-global code_reference
+app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+server_db = SQLAlchemy(app)
 
-class QuizRequestHandler(BaseHTTPRequestHandler):
-    """TEMPORARY IMPLEMENTATION OF QUIZ REQUEST HANDLER"""
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(bytes(read_template("index.html"), "utf-8"))
+@app.route("/", methods=['POST', 'GET'])
+def index():
+    return render_template("index.html")
 
-    def do_POST(self):
-        data_string = self.rfile.read(int(self.headers['Content-Length'])).decode('utf-8')
-        data = parse_qs(data_string, keep_blank_values=True)
-        global code_reference
 
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        if self.path == "/run_code":
+@app.route("/run_code", methods=['POST', 'GET'])
+def run_sender():
+    if request.method == 'POST':
+        code = request.form['codestuff']
+        p = run("python", stdout=PIPE, shell=True, stderr=STDOUT, input=code, encoding='ascii')
+        output = p.stdout
+        return render_template("index.html", print_output=output, codearea=code)
+    else:
+        return render_template("index.html")
 
-            code = data['codestuff'][0]
-            code_reference = code
-            p = run("python", stdout=PIPE, shell=True, stderr=STDOUT, input=code, encoding='ascii')
-            output = p.stdout
-            new_page = read_template("index.html").replace("<!-- OUTPUT PLACEHOLDER -->", output, 1)
-            new_page = new_page.replace("ENTER CODE HERE", code)
-            self.wfile.write(bytes(new_page, "utf-8"))
+@app.route("/save_code", methods=['POST'])
+def save_code_snippet():
+    if request.method == 'POST':
+        # --- SAVE SNIPPET INTO DATABASE TO PERSIST ON DIFFERENT SESSIONS ---
+        snippet = request.form['codestuff']
+        # -------------------------------------------------------------------
+        return render_template('index.html', codearea=snippet, savenotification="Code has been saved!")
+    else:
+        return render_template('index.html')
 
-        # ADDS SOME FUNCTIONALITY TO EXPAND PERSISTENT STORAGE MODULE
-        if self.path == "/store":
-            new_page = read_template("index.html").replace("<!-- OUTPUT PLACEHOLDER -->", " ", 1)
-            new_page = new_page.replace("ENTER CODE HERE", "code snippet has been save!")
-            self.wfile.write(bytes(new_page, "utf-8"))
-            db.storeCode(code_reference, "admin")
-
-        if self.path == "/pull":
-            code = db.retrieveCode("admin")
-            new_page = read_template("index.html").replace("<!-- OUTPUT PLACEHOLDER -->", "Code has been retrieved", 1)
-            new_page = new_page.replace("<!-- OUTPUT_TWO PLACEHOLDER -->", code)
-            self.wfile.write(bytes(new_page, "utf-8"))
-
-def read_template(filename, directory='templates'):
-    pathname = os.path.join(directory, filename)
-    temp_pathname = "codesender/templates/index.html"
-    f = open(temp_pathname, "r", encoding="utf-8")
-    return f.read()
-
+@app.route("/get_code", methods=['POST'])
+def pull_code_snippet():
+    if request.method == 'POST':
+        # --- SAVE REFERENCE TO CODE SNIPPET FROM DATA BASE IN VAR "snippet" ---
+        snippet = "TESTING PULL CODE SNIPPET"
+        # ----------------------------------------------------------------------
+        return render_template('index.html', codearea=snippet)
+    else:
+        render_template('index.html')
 
 
 def main():
-    webServer = HTTPServer((hostName, serverPort), QuizRequestHandler)
-    print("Server started http://%s:%s" % (hostName, serverPort))
-    try:
-        webServer.serve_forever()
-    except KeyboardInterrupt:
-        pass
-
-    webServer.server_close()
-    print("Server stopped.")
-
+    app.run(debug=False)

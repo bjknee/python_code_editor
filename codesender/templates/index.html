@@ -9,37 +9,38 @@
     <meta name="author" content="Ed Brown">
     <title>COMP2005 Python Quiz</title>
     <!-- Favicon -->
+    <style>
+        #uploadDownloadContainer { margin-top: 10px }
+    </style>
 </head>
-
 <body>
 <div id="intro">
     <h1>Python Online Quiz</h1>
     <div>
-        <pre><!-- OUTPUT_TWO PLACEHOLDER --></pre>
+        <pre id="save_output">{{savenotification}}</pre>
     </div>
 </div>
 <br>
 <div>
     <form action="/run_code" method="POST">
-        <textarea name="codestuff" id="coding" rows="25" cols="80">ENTER CODE HERE</textarea>
+        <textarea name="codestuff" id="coding" rows="25" cols="80" placeholder="ENTER CODE HERE">{{codearea}}</textarea>
         <br>
-        <button type="submit" id="run">Run</button>
-    </form>
-    <form action="/store" method="POST">
-        <button type="submit" id="store_code">Save Code Snippet</button>
-    </form>
-    <form action="/pull" method="POST">
-        <button type="submit" id="get_code">Pull Code Snippet</button>
+        <button type="submit" id="run" formaction="/run_code">Run</button>
+        <button type="submit" id="save_code" formaction="/save_code">Save Code Snippet</button>
+        <button type="submit" id="get_code" formaction="/get_code">Pull Code Snippet</button>
+        <br>
+        <div id="uploadDownloadContainer">
+            <button id="downloadButton" onclick="saveTextAsFile(coding.value, 'download.txt')">Download Code</button>
+            <input id="txtFile" type="file"/>
+        </div>
     </form>
     <br>
     <div id="output">
-        <pre><!-- OUTPUT PLACEHOLDER --></pre>
+        <pre>{{print_output}}</pre>
     </div>
     <br>
 </div>
-<div>
-
-
-</div>
+<script src="../static/upload.js"></script>
+<script src="../static/download.js"></script>
 </body>
 </html>
