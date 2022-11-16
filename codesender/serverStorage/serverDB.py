@@ -82,3 +82,9 @@ def add_code(user_id):
         return redirect(url_for("user_detail", id=user_id))
 
     return render_template("user/<int:id>/code_seg.html")
+
+
+@code_app.route("/user/<int:id>/code_seg", methods=["GET", "POST"])
+def get_code(user_id):
+    if request.method == "GET":
+        pass
