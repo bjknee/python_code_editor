@@ -1,0 +1,19 @@
+<!-- base.html (base html templating solution) -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <!-- width=device-width part sets the width of the page to follow the screen-width of the device,
+          	initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser 
+	  -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+	{% block content %}
+    {% endblock %}
+  </body>
+</html>
