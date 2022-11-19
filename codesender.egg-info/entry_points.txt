@@ -1,0 +1,3 @@
+[console_scripts]
+start-server = codesender.codesender:main
+
