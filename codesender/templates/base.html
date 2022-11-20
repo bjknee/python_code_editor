@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+      <h1> Welcome to G Team's Project!</h1>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  <!-- width=device-width part sets the width of the page to follow the screen-width of the device,
@@ -41,29 +42,15 @@
     </style>
   </head>
   <body>
+  <form action="/login" method="post">
   <button class="button button1">Log in</button>
+    </form>
+ <!-- <form action="" method="post"> -->
     <button class="button1 button11">Create an account</button>
-
+<!-- </form> -->
 	{% block content %}
     {% endblock %}
-  <h1> Welcome to G Team's Project!</h1>
 
 
-    <form action="/login" method="post">
-
-    <button type = "submit" id = "run"> </button>
-    </form>
-<!--
-    <form action = "/login" method="POST">
-
-    </form>
-
-      <form action="/run_code" method="POST">
-        <textarea name="codestuff" id="coding" rows="25" cols="80">ENTER CODE HERE</textarea>
-        <br>
-        <button type="submit" id="run">Run</button>
-    </form>
-
--->
   </body>
 </html>
