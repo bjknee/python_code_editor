@@ -1,19 +1,66 @@
-<!-- base.html (base html templating solution) -->
-
+<!-- base.html (base html templating solution)  -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
+       <form action="http://localhost:63342/codesender-project-gteam/codesender/templates/index.html?_ijt=uko6h38j1tm8ul4eu2h9p571o0&_ij_reload=RELOAD_ON_SAVE">
+            <button type="submit" id="get_code" >go to index page </button>
+        </form>
+      <form action="http://localhost:63342/codesender-project-gteam/codesender/templates/profiles.html?">
+            <button type="submit" id="get_code" >go to my profile page</button>
+      </form>
+
+      <h1> Welcome to G Team's Project!</h1>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  <!-- width=device-width part sets the width of the page to follow the screen-width of the device,
-          	initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser
+          	initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser 
 	  -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
+    <title>base page</title>
     <link rel="stylesheet" href="style.css">
+
+       <style>
+
+    .button{
+    border: none;
+    color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+    }
+
+    .button1 {
+  background-color: white;
+  padding: 16px 32px;
+  color: black;
+  border: 2px solid #4CAF50;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+    </style>
   </head>
   <body>
+  <form action="/login" method="post">
+  <button class="button button1">Log in</button>
+    </form>
+ <!-- <form action="" method="post"> -->
+    <button class="button1 button11">Create an account</button>
+<!-- </form> -->
 	{% block content %}
     {% endblock %}
+
+
+
   </body>
 </html>
