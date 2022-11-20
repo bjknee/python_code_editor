@@ -11,9 +11,10 @@ codespaces, as well as a storage solution that can be scaled much more easily.
 
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 server_db = SQLAlchemy(app)
-# server_db.init_app(code_app)
+# server_db.init_app(app)
+#
 
 
 class User(server_db.Model):
@@ -21,11 +22,16 @@ class User(server_db.Model):
     username = server_db.Column(server_db.String, unique=True, nullable=False)
     password = server_db.Column(server_db.String, unique=True, nullable=False)
     code_seg = server_db.Column(server_db.String)
+    personal_code_one = server_db.Column(server_db.String)
+    personal_code_two = server_db.Column(server_db.String)
+    personal_code_three = server_db.Column(server_db.String)
 
 
 class Admin(server_db.Model):
     id = server_db.Column(server_db.Integer, primary_key=True)
     admin_name = server_db.Column(server_db.String, unique=True, nullable=False)
     admin_pass = server_db.Column(server_db.String, unique=True, nullable=False)
+
+
 
 

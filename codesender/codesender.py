@@ -1,16 +1,6 @@
-from flask import Flask, render_template, request
 from subprocess import PIPE, STDOUT, run
-from flask_sqlalchemy import SQLAlchemy
-
-
-from codesender.serverStorage.serverStorage import serverStorage
-import os
-
-from codesender.serverStorage.serverDB import User, Admin
-
-app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
-server_db = SQLAlchemy(app)
+from codesender.serverDB import User, Flask, SQLAlchemy, app, server_db, render_template, request, redirect, url_for
+global user_session
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
@@ -26,6 +16,7 @@ def run_sender():
     else:
         return render_template("index.html")
 
+# TODO: Handle all use cases for user input
 @app.route("/login", methods=['POST'])
 def login():
     if request.method == 'POST':
@@ -34,20 +25,17 @@ def login():
         else:
             username = request.form['username']
             password = request.form['password']
-            code_app_users = server_db.session.execute(server_db.select(User).order_by(User.username)).scalars()
-            if username not in code_app_users.username:
-                return render_template('login.html', loginStatus="Invalid Username, Please Try Again")
-            else:
-                usersPassword = server_db.session.execute(
-                    server_db.select(User.password).where(User.username == username)).one()
-                if usersPassword != password:
-                    return render_template('login.html', loginStatus="Incorrect Password, Please Try Again")
-                else:
-                    loginStatus = "User: ", username, "Logged In Successfully"
-                    loggedIn = True
-                    if loggedIn:
-                        return render_template('index.html', loginStatus=loginStatus)
+            code_app_user = User.query.filter_by(username=username).first()
+            print(code_app_user)
+            global user_session
+            user_session = username
+            if username == code_app_user.username and password == code_app_user.password:
+                code = code_app_user.code_seg
+                return render_template('index.html', username="Logged in as: "+ username, codearea=code)
+            elif username != code_app_user.username or password != code_app_user.password:
+                return render_template('login.html', loginStatus="Invalid credentials")
 
+# TODO: Handle duplicate entry values
 @app.route("/create-user", methods=["GET", "POST"])
 def user_create():
     if request.method == "POST":
@@ -57,28 +45,65 @@ def user_create():
         )
         server_db.session.add(user)
         server_db.session.commit()
-        return render_template("index.html", savenotification=user.username)
+        print(user)
+        global user_session
+        user_session = user.username
+        return render_template("index.html", username="Logged in as: "+user.username)
+
+#TODO: Future functionality
+
+# @app.route("/users")
+# def user_list():
+#     code_app_users = server_db.session.execute(server_db.select(User).order_by(User.username)).scalars()
+#     return render_template("user/list.html", users=code_app_users)
+#
+#
+# @app.route("/user/<int:id>")
+# def user_detail(usr_id):
+#     user = server_db.get_or_404(User, usr_id)
+#     return render_template("user/detail.html", user=user)
+#
+#
+# @app.route("/user/<int:id>/delete", methods=["GET", "POST"])
+# def user_delete(usr_id):
+#     user = server_db.get_or_404(User, usr_id)
+#
+#     if request.method == "POST":
+#         server_db.session.delete(user)
+#         server_db.session.commit()
+#         return redirect(url_for("user_list"))
+#
+#     return render_template("user/delete.html", user=user)
 
 
-@app.route("/save_code", methods=['POST'])
-def save_code_snippet():
-    if request.method == 'POST':
-        # --- SAVE SNIPPET INTO DATABASE TO PERSIST ON DIFFERENT SESSIONS ---
-        snippet = request.form['codestuff']
-        # -------------------------------------------------------------------
-        return render_template('index.html', codearea=snippet, savenotification="Code has been saved!")
-    else:
-        return render_template('index.html')
+@app.route("/save_code", methods=["GET", "POST"])
+def add_code():
+    if request.method == "POST":
+        global user_session
+        code_app_user = User.query.filter_by(username=user_session).first()
+        code = request.form['codestuff']
+        code_app_user.code_seg = code
+        server_db.session.commit()
+        print(code_app_user.code_seg)
+        return render_template("index.html")
+
+
 
 @app.route("/get_code", methods=['POST'])
 def pull_code_snippet():
     if request.method == 'POST':
-        # --- SAVE REFERENCE TO CODE SNIPPET FROM DATA BASE IN VAR "snippet" ---
-        snippet = "TESTING PULL CODE SNIPPET"
-        # ----------------------------------------------------------------------
-        return render_template('index.html', codearea=snippet)
+        global user_session
+        code_app_user = User.query.filter_by(username=user_session).first()
+        code = code_app_user.code_seg
+        return render_template('index.html', codearea=code)
     else:
-        render_template('index.html')
+        return render_template('index.html')
+
+# STUB IMPLEMENTATION
+@app.route("/personal_code", methods=['POST'])
+def personal_codespace():
+    if request.method == 'POST':
+        return render_template('profiles.html', username=user_session)
 
 
 def main():

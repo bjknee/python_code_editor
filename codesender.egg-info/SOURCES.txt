@@ -15,5 +15,8 @@ codesender/serverStorage/serverStorage.py
 codesender/static/download.js
 codesender/static/styles.css
 codesender/static/upload.js
+codesender/templates/base.html
 codesender/templates/index.html
+codesender/templates/login.html
+codesender/templates/profiles.html
 codesender/tests/__init__.py
