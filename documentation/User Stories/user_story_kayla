@@ -1,0 +1,10 @@
+Penelope is a 4th year Computer Science student, 
+working on an undergraduate Honours project.
+When using other IDEs, a unittest module is readily available
+to test her project's performance.
+
+When she uses the codeServer application, there is no 
+testing module available. There is no way to 
+ensure that her project is working effectively.
+She also has no option to share her work in the application
+with someone else for code review.
