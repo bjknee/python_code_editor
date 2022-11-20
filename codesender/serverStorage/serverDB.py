@@ -10,7 +10,7 @@ codespaces, as well as a storage solution that can be scaled much more easily.
 """
 
 
-app = Flask("codesender.codesender.py")
+app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 server_db = SQLAlchemy(app)
 # server_db.init_app(code_app)
@@ -30,8 +30,8 @@ class Admin(server_db.Model):
 
 
 
-# with code_app.app_context():
-#     server_db.create_all()
+with app.app_context():
+    server_db.create_all()
 
 
 # @code_app.route("/users")

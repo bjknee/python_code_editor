@@ -11,7 +11,8 @@ server_db = SQLAlchemy(app)
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    return render_template("index.html")
+    loginStatus = "Not Logged In"
+    return render_template("index.html", loginStatus=loginStatus)
 
 @app.route("/login", methods=['POST'])
 def login():
@@ -22,17 +23,15 @@ def login():
         loginStatus = ""
         if username not in code_app_users.username:
             loginStatus = "Invalid Username, Please Try Again"
-            return redirect(url_for("login"))
+            return render_template('index.html', loginStatus=loginStatus)
         else:
             usersPassword = server_db.session.execute(server_db.select(User.password).where(User.username == username)).one()
             if usersPassword != password:
                 loginStatus = "Incorrect Password, Please Try Again"
-                return redirect(url_for("login"))
+                return render_template('index.html', loginStatus=loginStatus)
             else:
-                loginStatus = "Logged In:", username, "Successfully"
-                ## Add functionality to flag user as "logged in"
-                ## From there
-                return redirect(url_for(""))
+                loginStatus = "User: ", username, "Logged In Successfully"
+                return render_template('index.html', loginStatus=loginStatus)
 
 
 

@@ -1,8 +1,12 @@
 from flask import Flask, render_template, request
 from subprocess import PIPE, STDOUT, run
 from flask_sqlalchemy import SQLAlchemy
+
+
 from codesender.serverStorage.serverStorage import serverStorage
 import os
+
+from codesender.serverStorage.serverDB import User, Admin
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
@@ -10,8 +14,7 @@ server_db = SQLAlchemy(app)
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    return render_template("index.html")
-
+    return render_template("login.html")
 
 @app.route("/run_code", methods=['POST', 'GET'])
 def run_sender():
@@ -22,6 +25,40 @@ def run_sender():
         return render_template("index.html", print_output=output, codearea=code)
     else:
         return render_template("index.html")
+
+@app.route("/login", methods=['POST'])
+def login():
+    if request.method == 'POST':
+        if request.form['username'] == '' or request.form['password'] == '':
+            return render_template('login.html', loginStatus="Error, no entry.")
+        else:
+            username = request.form['username']
+            password = request.form['password']
+            code_app_users = server_db.session.execute(server_db.select(User).order_by(User.username)).scalars()
+            if username not in code_app_users.username:
+                return render_template('login.html', loginStatus="Invalid Username, Please Try Again")
+            else:
+                usersPassword = server_db.session.execute(
+                    server_db.select(User.password).where(User.username == username)).one()
+                if usersPassword != password:
+                    return render_template('login.html', loginStatus="Incorrect Password, Please Try Again")
+                else:
+                    loginStatus = "User: ", username, "Logged In Successfully"
+                    loggedIn = True
+                    if loggedIn:
+                        return render_template('index.html', loginStatus=loginStatus)
+
+@app.route("/create-user", methods=["GET", "POST"])
+def user_create():
+    if request.method == "POST":
+        user = User(
+            username=request.form["username"],
+            password=request.form["password"],
+        )
+        server_db.session.add(user)
+        server_db.session.commit()
+        return render_template("index.html", savenotification=user.username)
+
 
 @app.route("/save_code", methods=['POST'])
 def save_code_snippet():
@@ -45,4 +82,6 @@ def pull_code_snippet():
 
 
 def main():
-    app.run(debug=False)
+    with app.app_context():
+        server_db.create_all()
+    app.run(debug=True)
