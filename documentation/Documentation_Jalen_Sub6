@@ -1,0 +1,11 @@
+Author: Jalen Blackmore
+Date: November 20th, 2022
+
+For this submission, I worked on implementing user login and verification, including a "login" method that was written
+in recoverwork.py and added to codesender.py for final submission, as well as login.html which implements a login page
+before entering the code server page. I also worked on methods to add code to the database and recover it after it had
+been saved by the user.
+
+This implementation involved pulling information from the login page and comparing it against information pulled from
+the database. If there are any discrepancies from the entered information and the database of users, login is not
+possible and a message is given to the user to let them know that their credentials are invalid.
