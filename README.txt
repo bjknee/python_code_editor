@@ -1,27 +1,39 @@
 /codesender-project-gteam                           // Main repo directory
 └── /codesender                                     // Module directory
-    │   ├──/recoverWork                             // Module directory for recoverWork
-    │   │   └── __init__.py                         // recoverWork __init__
-    │   │   └── recoverWork.py                      // recoverWork module
-    │   ├──/serverStorage                           // Module directory for serverStorage
-    │   │   └── __init__.py                         // serverStorage __init__
-    │   │   └── serverStorage.py                    // serverStorage module
     │   ├──/static                                  // Holds static files
     │   │   └── styles.css                          // Master style sheet
+    │   │   └── upload.js                           // Javascript file for uploading code segments
+    │   │   └── download.js                         // Javascript file for downloading code segments
     │   ├──/templates                               // Holds HTML templates
-    │   │   └── index.html                          // index.html
+    │   │   └── base.html                           // base.html for html templating solution
+    │   │   └── index.html                          // index.html extends base.html
+    │   │   └── login.html                          // login.html extends base.html
+    │   │   └── profileOne.hmtl                     // profileOne.html extends base.html
+    │   │   └── profileTwo.html                     // profileTwo.html extends base.html
+    │   │   └── profileThree.html                   // profileThree.html extends base.html
     │   ├──/tests                                   // Module directory for regression tests
     │   │   └── __init__.py                         // tests __init__
     │   ├── __init__.py                             // codesender __init__
-    │   └── codesender.py                           // temporary codesender module
+    │   ├── codesender.py                           // Main application file
+    │   ├── recoverWork.py                          // Old recoverWork file (Has been refactored into codesender.py)
+    │   └── serverDB.py                             // Database and Application init
     ├── /documentation                              // Documentation directory for all additional documentation
     │       └── /User Stories                       // Directory to hold all user stories for submission 5
     │               ├── user_story_brian.txt        // Brian's User Story
     │               ├── user_story_Gizem.txt        // Gizem's User Story
     │               ├── user_story_jalen.txt        // Jalen's User Story
     │               └── user_story_kayla.txt        // Kayla's User Story
-    │        └── documentation for submission 5.txt // Documentation about our SCRUM meetings for submission 5
-    │        └── Team evaluation - Submission 5.txt // Documentation on our team evaluation and code review for submission 5
+    │        ├── Documentation_Jalen_Sub6           // Jalens Submission 6 Documentation
+    │        ├── Submission 6 Documentation         // Submission 6 Documentation
+    │        ├── Team Evaluation - Submission 6.txt // Team evaluation for submission 6
+    │        ├── Team evaluation - Submission 5.txt // Team evaluation for submission 5
+    │        ├── documentation for submission 5.txt // Documentation for submission 5
+    │        ├── flask endpoint routing documentation // Flask documentation
+    │        ├── save-revert documentation          // Save-Revert documentation
+    │        ├── template module                    // HTML templating solution documentation
+    │        └── upload_download documentation      // Upload/Download documentation
+    ├── /instance                                   // database table directory
+    │        └── users.db                           // Database file for Users table
     ├── README.txt                                  // README
     └── setup.py                                    // Installation file
 
@@ -41,7 +53,7 @@ Launching the Server:
     - While still inside the virtual environment, launch server with command:
         ~$ start-server
     - Open any web browser and navigate to:
-        localhost:8080
+        localhost:5000
 
 Using the application:
     - Type python code into the text area and press "Run" to
