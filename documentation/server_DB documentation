@@ -1,0 +1,8 @@
+Author: Kayla Malcolm
+Date: November 20, 2022
+
+To implement the database module, it must work in response to the method calls associated with the codesender package.
+The database module has a User table object, that include the username, password and code segment unique to each user. The Admin
+table object includes the admin username and password. Other table objects can be added and the database can be scaled easily.
+It is expected that when methods such as add_user, add_code and user_list are called, the database will be launched for queries,
+as needed.
