@@ -1,0 +1,7 @@
+Author: Brian Knee
+Date: November 20th, 2022
+
+With the addition of Flask and database integration I changed how the save and revert buttons actually read and write
+data to the coding space. Save now stores the code in the coding space into an attribute in the User database table
+named code_seg. Revert will reference that same attribute and update the content of the coding space with the last
+saved code segment.

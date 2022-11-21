@@ -1,5 +1,3 @@
-//ATTRIBUTIONS https://www.geeksforgeeks.org/how-to-load-the-contents-of-a-text-file-into-a-javascript-variable/
-
 let input = document.querySelector('input')
 let textarea = document.querySelector('textarea')
 
