@@ -1,54 +1,44 @@
-<!DOCTYPE HTML>
-<html>
-
-<head>
-    <!-- Meta Data -->
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
-    <meta name="description" content="Online Python Editor With Live Syntax Checking">
-    <meta name="keywords" content="Lint,Online,Editor,Python,Syntax-Checking">
-    <meta name="author" content="Ed Brown">
-    <title>COMP2005 Python Quiz</title>
-    <!-- Favicon -->
-    <style>
-        #uploadDownloadContainer { margin-top: 10px }
-    </style>
-</head>
-<body>
-        <form action="http://localhost:63342/codesender-project-gteam/codesender/templates/base.html?_ijt=cbf14h2pig4v05v3qq0aj1tu4q&_ij_reload=RELOAD_ON_SAVE">
-            <button type="submit" id="get_code" >go to base page</button>
-        </form>
-        <form action="http://localhost:63342/codesender-project-gteam/codesender/templates/profiles.html?_ijt=58pv0rls4ob4e416u4a3nsj9mh&_ij_reload=RELOAD_ON_SAVE">
-            <button type="submit" id="get_code" >go to my profile page</button>
-        </form>
-<div id="intro">
-    <h1>Python Online Quiz</h1>
-    <div>
-        <pre id="save_output">{{savenotification}}</pre>
-    </div>
-</div>
-<br>
-<div>
-    <form action="/run_code" method="POST">
-        <textarea name="codestuff" id="coding" rows="25" cols="80" placeholder="ENTER CODE HERE">{{codearea}}</textarea>
-        <br>
-        <button type="submit" id="run" formaction="/run_code">Run</button>
-        <button type="submit" id="save_code" formaction="/save_code">Save Code Snippet</button>
-        <button type="submit" id="get_code" formaction="/get_code">Pull Code Snippet</button>
-
-
-        <br>
-        <div id="uploadDownloadContainer">
-            <button id="downloadButton" onclick="saveTextAsFile(coding.value, 'download.txt')">Download Code</button>
-            <input id="txtFile" type="file"/>
-        </div>
+{% extends "base.html" %}
+{% block content %}
+    <form action="/profileOne" method="POST">
+            <h3 name="user">{{username}}</h3>
+            <button type="submit">Go to personal Code Space</button>
     </form>
-    <br>
-    <div id="output">
-        <pre>{{print_output}}</pre>
+    <div id="intro">
+        <h1>Python Online Quiz</h1>
+        <div>
+            <pre id="save_output">{{savenotification}}</pre>
+        </div>
     </div>
     <br>
-</div>
-<script src="../static/upload.js"></script>
-<script src="../static/download.js"></script>
-</body>
-</html>
+    <div>
+        <form action="/run_code" method="POST">
+            <textarea name="codestuff" id="coding" rows="25" cols="80" placeholder="ENTER CODE HERE">{{codearea}}</textarea>
+            <br>
+            <button type="submit" id="run" formaction="/run_code">Run</button>
+            <button type="submit" id="save_code" formaction="/save_code">Save Code Snippet</button>
+            <button type="submit" id="get_code" formaction="/get_code">Pull Code Snippet</button>
+
+
+            <br>
+            <div id="uploadDownloadContainer">
+                <button id="downloadButton" onclick="saveTextAsFile(coding.value, 'download.txt')">Download Code</button>
+                <input id="txtFile" type="file"/>
+            </div>
+        </form>
+        <br>
+        <div id="output">
+            <pre>{{print_output}}</pre>
+        </div>
+        <br>
+    </div>
+    <script src="../static/upload.js"></script>
+    <script src="../static/download.js"></script>
+{% endblock %}
+
+<!--        <form action="http://localhost:63342/codesender-project-gteam/codesender/templates/base.html?_ijt=cbf14h2pig4v05v3qq0aj1tu4q&_ij_reload=RELOAD_ON_SAVE">-->
+<!--            <button type="submit" id="get_code" >go to base page</button>-->
+<!--        </form>-->
+<!--        <form action="http://localhost:63342/codesender-project-gteam/codesender/templates/profiles.html?_ijt=58pv0rls4ob4e416u4a3nsj9mh&_ij_reload=RELOAD_ON_SAVE">-->
+<!--            <button type="submit" id="get_code" >go to my profile page</button>-->
+<!--        </form>-->
