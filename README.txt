@@ -52,11 +52,5 @@ Using the application:
       saved.
     - To retrieve a code snippet, press "Pull Code Snippet". You
       should see the code snippet you saved in the previous step
-      displayed above the form.
-
-Known Limitations:
-    - Currently "Save Code Snippet" only works as intended
-      after pressing "Run". This is due to the HTML file not
-      being updated until after the POST request sent by the
-      "Run" button.
+      displayed above the forms
 

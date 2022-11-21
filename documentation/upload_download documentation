@@ -1,0 +1,14 @@
+Author: Brian Knee
+Date: November 20th, 2022
+
+For Attributions on this section see the following pages:
+
+https://www.geeksforgeeks.org/how-to-load-the-contents-of-a-text-file-into-a-javascript-variable/
+https://gtawebdevelopers.com/javascript-jquery/download-textarea-contents-file-using-javascript/
+
+Instead of using python to upload and download code files from the codesender app, I instead
+decided to use two simple javascript files to handle this functionality on the client side.
+This made the implementation much easier as there is no writing the files and pulling them from
+the database. Users can upload any text files from their local machine directly into the coding space.
+When downloading the code, users can download exactly what is represented in the coding space into
+a text file from the browser. As a reference to create these files I used the two sites listed above.

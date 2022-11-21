@@ -1,0 +1,9 @@
+Author: Brian Knee
+Date: November 20th, 2022
+
+To implement Flask into the application, we needed to completely refactor the existing code base. The initial functions
+at the top of codesender handle the base functionality that was present in submission 5. We changed up our directory
+structure to better suit this type of development as importing each additional module as its own sudo python package
+ended up causing more issues that it was solving. In response to this, we encouraged decoupling through sectioning off
+areas in the codesender.py file for specific modules. To provide additional decoupling to the serverStorage module we placed
+the app and database initialization in the serverDB file and made the codesender file only responsible for routing. 
