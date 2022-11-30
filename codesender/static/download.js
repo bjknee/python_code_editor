@@ -1,4 +1,5 @@
-function saveTextAsFile(textToWrite, fileNameToSaveAs) {
+function saveTextAsFile(fileNameToSaveAs) {
+    textToWrite = editor.getValue();
     var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
     var downloadLink = document.createElement("a");
     downloadLink.download = fileNameToSaveAs;
