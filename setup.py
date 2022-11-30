@@ -19,7 +19,7 @@ setup(
     url="https://github.com/MUN-CS2005/codesender-project-gteam",
 
     # Package and requirement meta data
-    packages=['codesender', 'codesender.serverStorage'],
+    packages=['codesender'],
     install_requires=[
         'Flask',
         'flask_sqlalchemy'
