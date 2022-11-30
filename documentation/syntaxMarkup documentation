@@ -1,0 +1,9 @@
+Author: Brian Knee
+Date: November 30th, 2022
+
+For the syntax markup functionality I implemented the javascript library CodeMirror. It natively covered most of the
+functionality required for the project in making the user inputted code more readable. There was some minor refactoring
+done to the upload.js and download.js files because CodeMirror handles text input slightly differently than a vanilla
+text area. I decided to include the library in the project files for longevity, importing the library as a CDN
+could have caused future issue. All functionality is still currently intact and the text area now reads more like an
+actual IDE rather just plain text on a web page.
