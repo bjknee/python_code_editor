@@ -14,7 +14,7 @@ input.addEventListener('change', () => {
         const file = e.target.result;
 
         const lines = file.split(/\r\n|\n/);
-        textarea.value = lines.join('\n');
+        editor.getDoc().setValue(lines.join('\n'));
     };
     reader.onerror = (e) => alert(e.target.error.name);
 

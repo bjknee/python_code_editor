@@ -2,25 +2,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<!--       <form action="http://localhost:63342/codesender-project-gteam/codesender/templates/index.html?_ijt=uko6h38j1tm8ul4eu2h9p571o0&_ij_reload=RELOAD_ON_SAVE">-->
-<!--            <button type="submit" id="get_code" >go to index page </button>-->
-<!--        </form>-->
-<!--      <form action="http://localhost:63342/codesender-project-gteam/codesender/templates/profiles.html?">-->
-<!--            <button type="submit" id="get_code" >go to my profile page</button>-->
-<!--      </form>-->
-
-<!--      <h1> Welcome to G Team's Project!</h1>-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	  <!-- width=device-width part sets the width of the page to follow the screen-width of the device,
-          	initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser 
-	  -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>base page</title>
     <link rel="stylesheet" href="style.css">
+    <script src="../static/codemirror/lib/codemirror.js"></script>
+    <link href="../static/codemirror/lib/codemirror.css" rel="stylesheet">
+    <script src="../static/codemirror/mode/python/python.js"></script>
+    <link href="../static/codemirror/theme/dracula.css" rel="stylesheet">
   </head>
   <body>
         {% block content %}
         {% endblock %}
   </body>
+  <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById('coding'), {
+          mode : 'python',
+          theme : 'dracula',
+          lineNumber: true
+      })
+  </script>
 </html>
