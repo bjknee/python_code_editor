@@ -9,10 +9,11 @@ serverStorage module's use of Shelve. This is to provide a much more robust mean
 codespaces, as well as a storage solution that can be scaled much more easily.
 """
 
-
 app = Flask("codesender.codesender.py")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 server_db = SQLAlchemy(app)
+
+
 # server_db.init_app(code_app)
 
 
@@ -29,4 +30,13 @@ class Admin(server_db.Model):
     admin_pass = server_db.Column(server_db.String, unique=True, nullable=False)
 
 
+class CodeSeg(server_db.Model):
+    id = server_db.Column(server_db.Integer, primary_key=True)
+    segment = server_db.Column(server_db.String, unique=True, nullable=False)
+    comments = server_db.Column(server_db.String, nullable=True)
 
+
+class CommentSec(server_db.Model):
+    id = server_db.Column(server_db.Integer, primary_key=True)
+    comment_user = server_db.Column(server_db.String, nullable=False)
+    comment = server_db.Column(server_db.String, nullable=False)

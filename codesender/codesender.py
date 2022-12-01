@@ -8,6 +8,7 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 server_db = SQLAlchemy(app)
 
+
 @app.route("/", methods=['POST', 'GET'])
 def index():
     return render_template("index.html")
@@ -23,6 +24,7 @@ def run_sender():
     else:
         return render_template("index.html")
 
+
 @app.route("/save_code", methods=['POST'])
 def save_code_snippet():
     if request.method == 'POST':
@@ -32,6 +34,7 @@ def save_code_snippet():
         return render_template('index.html', codearea=snippet, savenotification="Code has been saved!")
     else:
         return render_template('index.html')
+
 
 @app.route("/get_code", methods=['POST'])
 def pull_code_snippet():
