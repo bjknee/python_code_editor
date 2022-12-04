@@ -1,25 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
+    <form action="/" method="POST">
+           <button style="background-color:rgba(128,0,128,0.3);" type="submit"  >log out</button>
+    </form>
     <form action="" method="POST">
         <h3 name="user">{{username}}</h3>
-        <button type="submit" formaction="/return_to_index">Go to Main</button>
+        <button style="background-color:rgba(128,0,128,0.3);" type="submit" formaction="/return_to_index">Go to Main</button>
         <div id="intro">
             <h1>Python Online Quiz</h1>
             <div>
                 <pre id="save_output">{{savenotification}}</pre>
             </div>
         </div>
-        <button type="submit" formaction="/profileOne">Code Space One</button>
-        <button type="submit" formaction="/profileTwo">Code Space Two</button>
-        <button type="submit" formaction="/profileThree">Code Space Three</button>
+        <button style="background-color:rgba(128,0,128,0.3);" type="submit" formaction="/profileOne">Code Space One</button>
+        <button style="background-color:rgba(128,0,128,0.3);" type="submit" formaction="/profileTwo">Code Space Two</button>
+        <button style="background-color:rgba(128,0,128,0.3);" type="submit" formaction="/profileThree">Code Space Three</button>
     </form>
     <br>
     <div>
         <form action="" method="POST">
             <textarea name="codestuff" id="coding" rows="25" cols="80" placeholder="ENTER CODE HERE">{{codearea}}</textarea>
             <br>
-            <button type="submit" id="run" formaction="/personal_run_two">Run</button>
-            <button type="submit" id="save_code" formaction="/save_profile_two">Save Code Snippet</button>
+            <button style="background-color:rgba(128,0,128,0.3);" type="submit" id="run" formaction="/personal_run_two">Run</button>
+            <button style="background-color:rgba(128,0,128,0.3);" type="submit" id="save_code" formaction="/save_profile_two">Save Code Snippet</button>
         </form>
         <br>
         <div id="output">
