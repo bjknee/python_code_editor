@@ -1,18 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
+
 <div id="intro">
-    <h1>Login</h1>
+    <h3></h3>
+     <h1 style="background-color:rgba(128,0,128,0.5);">&emsp;&emsp;&emsp;&emsp;&emsp;Login or Sign up for Python Online Quiz</h1>
 </div>
 <br>
 <div>
-    <form action="/" method="POST">
+    <br>
+<!--    <form action="/adminPage" method="POST">-->
+<!--        <button style="background-color:rgba(128,0,128,0.3);" type="submit" id="runAdmin" formaction="/adminPage">Admin Login </button>-->
+<!--&lt;!&ndash;        <br>&ndash;&gt;-->
+<!--&lt;!&ndash;          <input type="text" placeholder="Email" name="username1"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <br>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="text" placeholder="Password" name="password1" />&ndash;&gt;-->
+<!--&lt;!&ndash;        <br>&ndash;&gt;-->
+<!--        <p>{{loginStatus1 }} </p>-->
+<!--    </form>-->
+<!--<br><br><br><br><br>-->
+
+    <form action="/index" method="POST">
         <input type="text" placeholder="Email" name="username"/>
         <br>
         <input type="text" placeholder="Password" name="password" />
         <br>
-        <button type="submit" id="run" formaction="/login">Login </button>
-        <button type="submit" id="create" formaction="/create-user">Create</button>
-        <p>{{loginStatus}}</p>
+        <button style="background-color:rgba(128,0,128,0.3);" type="submit" id="run" formaction="/login">Login </button>
+
+        <button style="background-color:rgba(128,0,128,0.3);" type="submit" id="create" formaction="/create-user">Create</button>
+
+        <form action="/adminPage" method="POST">
+        <button style="background-color:rgba(128,0,128,0.3);" type="submit" id="runAdmin" formaction="/adminPage">Admin Login </button>
+        <p>{{error}} {{loginStatus1 }} </p>
+        </form>
+
+    <h4>(Create a user with a username starting with 'admin' to be an admin)</h4>
+    </div>
+        <p>{{loginStatus}} {{ adminAccess}}  </p>
     </form>
-</div>
+
 {% endblock %}
