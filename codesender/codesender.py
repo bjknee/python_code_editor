@@ -1,5 +1,5 @@
 from subprocess import PIPE, STDOUT, run
-from codesender.serverDB import User, Flask, SQLAlchemy, app, server_db, render_template, request, redirect, url_for
+from codesender.serverDB import User,Admin, Flask, SQLAlchemy, app, server_db, render_template, request, redirect, url_for
 global user_session
 
 
@@ -32,34 +32,104 @@ def login():
     if request.method == 'POST':
         if request.form['username'] == '' or request.form['password'] == '':
             return render_template('login.html', loginStatus="Error, no entry.")
+
         else:
             username = request.form['username']
             password = request.form['password']
             code_app_user = User.query.filter_by(username=username).first()
+
             if code_app_user == None:
                 return render_template('login.html', loginStatus="Invalid credentials")
             global user_session
             user_session = username
+
             if username == code_app_user.username and password == code_app_user.password:
                 code = code_app_user.code_seg
                 return render_template('index.html', username="Logged in as: "+ username, codearea=code)
+
             elif username != code_app_user.username or password != code_app_user.password:
                 return render_template('login.html', loginStatus="Invalid credentials")
+
+#admin login
+@app.route("/adminPage", methods = ["POST"])
+def adminAccess():
+    if request.method == 'POST':
+        if request.form['username'] == '' or request.form['password'] == '':
+            return render_template('login.html', loginStatus="Error, wrong entry.")
+        else:
+            print("admin login")
+            if request.form["username"].startswith("admin"):
+                adminName = request.form["username"]
+                code_app_admin = Admin.query.filter_by(admin_name=adminName).first()
+                if code_app_admin ==None:
+                    return render_template("login.html", loginStatus1="Invalid credentials")
+
+                if code_app_admin.admin_pass == request.form["password"]:
+                    return render_template("adminPage.html", username="Logged in as an admin, " + adminName)
+
+                else:
+                    return render_template("adminPage.html", username="Invalid credentials " + adminName)
+
+    return
+
+
+@app.route("/saveChanges", methods = ["POST"])
+def adminChangeCode():
+    selectedUsr = request.form["userSelected"]
+    usrObj = User.query.filter_by(username=selectedUsr).first()
+
+    if selectedUsr == "Enter username to make changes" or selectedUsr.startswith("admin") \
+            or usrObj == None  :   # nonetype has no attribute error
+        return render_template("adminPage.html", loginSt = "Invalid credentials")
+    else:
+        print("else")
+        print(selectedUsr)
+        print(request.form["codeToChange1"])
+        if request.form["codeToChange1"] != "Enter code for codespace 1 to make changes":
+            usrObj.personal_code_one = request.form["codeToChange1"]
+            server_db.session.commit()
+
+        if request.form["codeToChange2"] != "Enter code for codespace 2 to make changes":
+            usrObj.personal_code_two = request.form["codeToChange2"]
+            server_db.session.commit()
+
+        if request.form["codeToChange3"] != "Enter code for codespace 3 to make changes":
+            usrObj.personal_code_three = request.form["codeToChange3"]
+            server_db.session.commit()
+        return render_template("adminPage.html", loginSt = "changes are saved!")
+
+
 
 # TODO: Handle duplicate entry values
 @app.route("/create-user", methods=["GET", "POST"])
 def user_create():
     if request.method == "POST":
-        user = User(
-            username=request.form["username"],
-            password=request.form["password"],
-        )
-        server_db.session.add(user)
-        server_db.session.commit()
-        print(user)
-        global user_session
-        user_session = user.username
-        return render_template("index.html", username="Logged in as: "+user.username)
+        boolean = request.form["username"].startswith("admin")
+        if boolean:
+            if request.form["password"]==None:
+                return render_template("login.html", error="wrong entry")
+            admin = Admin(
+                admin_name=request.form["username"],
+                admin_pass=request.form["password"],
+            )
+            server_db.session.add(admin)
+            server_db.session.commit()
+            return render_template("adminPage.html", username="Logged in as an admin, " + admin.admin_name)
+
+        if request.form["username"] == "" or request.form["password"] == "":
+            return render_template("login.html", error="no entry")
+        else:
+            user = User(
+                username=request.form["username"],
+                password=request.form["password"],
+            )
+
+            server_db.session.add(user)
+            server_db.session.commit()
+            print(user)
+            global user_session
+            user_session = user.username
+            return render_template("index.html", username="Logged in as: "+ user.username)
 
 
 """-----------------------------------------"""
@@ -98,13 +168,24 @@ def pull_code_snippet():
 """ --- PERSONAL CODE SPACES MODULE ---"""
 
 
+@app.route("/adminChanges", methods=["POST"])
+def adminSelectsUser():
+    if request.method == "POST":
+        selectedUsername = request.form["userSelected"]
+        selection = User.query.filter_by(username=selectedUsername).first()
+        if selection != None:
+            return render_template("adminChanges.html", message="selected user: " + selection.username)
+        else:
+            return render_template("adminChanges.html", message="User not found!")
+
+
+
 @app.route("/return_to_index", methods=['POST'])
 def return_to_index():
     if request.method == 'POST':
         code_app_user = User.query.filter_by(username=user_session).first()
         code = code_app_user.code_seg
         return render_template('index.html', username="Logged in as: "+ user_session, codearea=code)
-
 
 @app.route("/personal_run_one", methods=['POST'])
 def run_profile_one():
@@ -115,7 +196,6 @@ def run_profile_one():
         return render_template("profileOne.html", print_output=output, codearea=code, username=user_session+"'s Code Space 1")
     else:
         return render_template("login.html", loginstatus="Something went wrong.")
-
 
 @app.route("/personal_run_two", methods=['POST'])
 def run_profile_two():
@@ -141,6 +221,7 @@ def run_profile_three():
 
 @app.route("/profileOne", methods=['POST'])
 def profileOne():
+    global user_session
     if request.method == 'POST':
         code_app_user = User.query.filter_by(username=user_session).first()
         code = code_app_user.personal_code_one
@@ -190,7 +271,6 @@ def saveProfileThree():
         code_app_user.personal_code_three = code
         server_db.session.commit()
         return render_template("profileThree.html", codearea=code, savenotification="Code Saved to Profile 3!", username=user_session + "'s Code Space 3")
-
 
 
 """------------------------------------"""
