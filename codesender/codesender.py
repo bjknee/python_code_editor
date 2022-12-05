@@ -284,6 +284,14 @@ def saveProfileThree():
                                username=user_session + "'s Code Space 3")
 
 
+@app.route("/code_app_logs")
+def code_app_logs():
+    app.logger.info('Codesender activity log')
+    app.logger.warning('Codesender warning log')
+    app.logger.error('Codesender error log')
+    return f"Welcome to the Codesender Application"
+
+
 """------------------------------------"""
 
 
