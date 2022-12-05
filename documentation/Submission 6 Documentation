@@ -1,0 +1,25 @@
+G Team In-Person Meeting
+Date: November 12, 2022.
+Cycle: 6
+Attendees: Jalen Blackmore, Gizem Ensari, Brian Knee, Kayla Malcolm
+
+Meeting Recording link: https://drive.google.com/drive/folders/11vISLT5jEOrW1AkCrzEjGKElmyv17LCx?usp=share_link
+
+Meeting Minutes:
+
+For cycle 6, Jalen is SCRUM master, Kayla is Note Taker and Brian is Technical Lead.
+
+Gizem is the manager of pull requests for this cycle.
+
+Confusion surrounding acceptable submission of Individual Tasks was resolved.
+
+The additional Individual tasks, added to the KanBan board by Kayla, were allocated and the task assignments (for cycle 6) are as follows:
+
+Jalen - "Recover work", "User logins and passwords"
+Gizem - "Template" module, "Profile and personal code spaces"
+Brian - "Server Setup" (maintenance from cycle 5), "Upload/Download code segments", "Save-Revert buttons" (maintenance of initial work from cycle 5), "Flask framework
+         endpoint routing"
+Kayla - "Persist Storage" module (maintenance from cycle 6), "Database complete upgrade"
+
+It was established that this cycle indicates that our individual tasks are interconnected, making it important that our workflow be timely and seamless as possible.
+Issues were added to the Issue Tracker as needed and discussed in our Discord server chat.

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/" method="POST">
+    <button style="background-color:rgba(128,0,128,0.3);" type="submit"  >log out</button>
+</form>
+
+<h1>Welcome Admin! </h1>
+<h3>{{username}}</h3>
+
+
+<br>
+<form action="/saveChanges" method="POST" >
+    <textarea name="userSelected" id="coding" rows="5" cols="30" placeholder="username enterance">Enter username to make changes</textarea>
+<br>
+    <textarea name="codeToChange1" id="code1" rows="5" cols="30" placeholder="enter code">Enter code for codespace 1 to make changes</textarea>
+
+<br>
+    <textarea name="codeToChange2" id="code2" rows="5" cols="30" placeholder="enter code">Enter code for codespace 2 to make changes</textarea>
+
+<br>
+    <textarea name="codeToChange3" id="code3" rows="5" cols="30" placeholder="enter code">Enter code for codespace 3 to make changes</textarea>
+
+     <button style="background-color:rgba(128,0,128,0.3);" type="submit" > save </button>
+    <h4>{{loginSt}}</h4>
+</form>
+
+
+<h3>{{message}}</h3>
+
+
+
+
+
+
+
+
+{% endblock %}
