@@ -6,3 +6,9 @@ The database module has a User table object, that include the username, password
 table object includes the admin username and password. Other table objects can be added and the database can be scaled easily.
 It is expected that when methods such as add_user, add_code and user_list are called, the database will be launched for queries,
 as needed.
+
+Date: December 05, 2022
+
+The database module was expanded to include tables for comments on public code segments from different users and for records
+related to the public code segments. These tables are also expected to play a part in querying codesender appkication activity related
+to its users.
