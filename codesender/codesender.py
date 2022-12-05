@@ -1,12 +1,15 @@
 from flask import Flask, render_template, request
 from subprocess import PIPE, STDOUT, run
 from flask_sqlalchemy import SQLAlchemy
+import logging
 from codesender.serverStorage.serverStorage import serverStorage
 import os
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 server_db = SQLAlchemy(app)
+logging.basicConfig(filename='codesender.log', level=logging.DEBUG, format=f'%(timestamp)s %(level)s %(name)s %('
+                                                                           f'threadName)s : %(message)s')
 
 
 @app.route("/", methods=['POST', 'GET'])
@@ -45,6 +48,14 @@ def pull_code_snippet():
         return render_template('index.html', codearea=snippet)
     else:
         render_template('index.html')
+
+
+@app.route("/code_app_logs")
+def code_app_logs():
+    app.logger.info('Codesender activity log')
+    app.logger.warning('Codesender warning log')
+    app.logger.error('Codesender error log')
+    return f"Welcome to the Codesender Application"
 
 
 def main():
