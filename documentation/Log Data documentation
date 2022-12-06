@@ -1,4 +1,5 @@
 Log Data Documentation
+Author: Kayla Malcolm
 Date: December 05, 2022.
 
 The Log Data task was implemented using the Flask framework. This part of the project was added to the codesender.py
