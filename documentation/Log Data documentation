@@ -1,0 +1,8 @@
+Log Data Documentation
+Date: December 05, 2022.
+
+The Log Data task was implemented using the Flask framework. This part of the project was added to the codesender.py
+as it would have to be activated with the server. The log data method produces a log file that tracks all codeserver
+application activity, with the username, timestamp and what part of the application is being accessed and/or
+what activity is being performed. The log data method, using Flask, accounts for all activity, errors and warnings
+produced in running the application.
