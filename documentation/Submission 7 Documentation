@@ -1,0 +1,28 @@
+G Team In-Person Meeting
+Date: November 27, 2022.
+Cycle: 7
+Attendees: Gizem Ensari, Brian Knee, Kayla Malcolm
+
+Meeting Recording link: https://drive.google.com/drive/folders/11vISLT5jEOrW1AkCrzEjGKElmyv17LCx?usp=share_link
+
+Meeting Minutes:
+
+For cycle 7, Brian is SCRUM master and Technical Lead and Kayla is Note Taker.
+
+Kayla is the manager of pull requests for this cycle.
+
+Jalen was absent due to cirtcumstances beyond his control and was informed of the proceedings of the meeting via the recording listed.
+
+The additional Individual tasks, added to the KanBan board by Kayla, were allocated and the task assignments (for cycle 7) are as follows:
+
+Jalen - "Recover work", "User logins and passwords", "Pylint feedback", "Task 2 from Brian's User Story"
+Gizem - "Template" module, "Profile and personal code spaces", "Code challenges"
+Brian - "Server Setup" (maintenance from cycle 5), "Upload/Download code segments", "Save-Revert buttons" (maintenance of initial work from cycle 5), "Flask framework
+         endpoint routing", "Syntax markup and code hints", "Task 1 from Jalen's User Story"
+Kayla - "Persist Storage" module (maintenance from cycle 6  & 7), "Database complete upgrade", "Log data"
+
+It was established that this cycle indicates that our individual tasks are interconnected, making it important that our workflow be timely and seamless as possible.
+Issues were added to the Issue Tracker as needed and discussed in our Discord server chat. 
+
+It was ensured that issues with our respective tasks were communicated with the group for help and noted on the Issue tracker when possible. The group is satisfied with
+the work submitted.
